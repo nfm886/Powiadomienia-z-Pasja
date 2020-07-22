@@ -11,11 +11,15 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
+  "watch": {
+    "build": "{src,test}/*.js"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "./scripts/build.sh",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "npm-watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "npm-watch": "^0.6.0"
   }
 }
