@@ -17,11 +17,11 @@ html, body {
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   min-height: 467px;
-  min-width: 282px;
+  min-width: 360px;
   background-color: #fefefe;
 }
 .notifications {
-  width: 282px;
+  width: 360px;
   max-height: 467px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -100,7 +100,7 @@ html, body {
 }
 .nfyItemLine {
   display: inline-block;
-  width: 245px;
+  width: 323px;
   font-size: 12px;
   margin-top: 3px;
 }
