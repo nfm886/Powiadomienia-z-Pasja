@@ -15,7 +15,7 @@ function App() {
     <Router>
       <Navigation />
       <Switch>
-        <Route path="/settings">
+        <Route path="/settings/watchlist">
           <Settings />
         </Route>
         <Route path="/watchlist">
