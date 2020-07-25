@@ -6,7 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import Navigation from './components/Navigation';
-import Settings from './components/Settings';
+import Settings from './components/settings/Main';
 import Watchlist from './components/Watchlist';
 import Notifications from './components/Notifications';
 
