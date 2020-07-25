@@ -16,7 +16,7 @@
     "react-scripts": "3.4.1"
   },
   "watch": {
-    "build": "{src,src/components}/*.js"
+    "build": "{src,src/components,src/components/settings}/*.js"
   },
   "scripts": {
     "start": "react-scripts start",
