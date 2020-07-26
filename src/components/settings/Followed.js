@@ -200,7 +200,7 @@ const FollowedList = () => {
       <SearchBox />
       <Typography variant="h6">Obserwujesz</Typography>
       {
-        (followedList.length === 0) ? <Chip className={classes.chipStyle} size="small" icon={<LoyaltyIcon />} label="Brak" color="primary" /> :
+        (!followedList || followedList.length === 0) ? <Chip className={classes.chipStyle} size="small" icon={<LoyaltyIcon />} label="Brak" color="primary" /> :
           followedList.map((item) => {
             return <Chip className={classes.chipStyle} size="small" icon={<LoyaltyIcon />} label={item.name} name={item.name} onDelete={() => handleDelete(item.name)} color="primary" />
           })
