@@ -118,8 +118,8 @@ let storageData = [];
 let indexedValues = [];
 
 chrome.storage.local.get(['index'], storage => {
-  if (storage.index != undefined) {
-    storage.index.map((item) => {
+  if (storage.index !== undefined) {
+    storage.index.forEach(item => {
       storageData.push({
         name: `${item.popularity} : ${item.name}`,
         url: item.url
@@ -139,7 +139,7 @@ function SearchBox() {
     const temp = [];
 
     chrome.storage.sync.get(['followed'], storage => {
-      if (storage.followed != undefined) {
+      if (storage.followed !== undefined) {
         for (let i = 0; i < storage.followed.length; i++)
           temp.push({
             name: storage.followed[i].name,
@@ -180,7 +180,7 @@ const FollowedList = () => {
     chrome.storage.sync.get(['followed'], storage => {
       let followed = storage.followed;
       followed = followed.filter((object) => {
-        return object.name != toRemove;
+        return object.name !== toRemove;
       });
       chrome.storage.sync.set({
         followed: followed

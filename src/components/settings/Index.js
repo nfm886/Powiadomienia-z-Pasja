@@ -81,7 +81,7 @@ const IndexSettings = () => {
 
   useEffect(() => {
     chrome.storage.local.get(['index', 'lastScan'], storage => {
-      if (storage.index != undefined) {
+      if (storage.index !== undefined) {
         setData({
           lastScan: storage.lastScan,
           length: storage.index.length
