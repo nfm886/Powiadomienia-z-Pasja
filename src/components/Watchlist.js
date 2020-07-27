@@ -62,7 +62,6 @@ const GettingPosts = (object, iteration) => new Promise((resolve, reject) => {
       resolve(GettingPosts(object, iteration));
     });
   } else {
-    console.log(watchList)
     resolve(watchList);
   }
 })
