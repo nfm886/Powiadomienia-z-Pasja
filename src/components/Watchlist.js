@@ -13,6 +13,26 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)"
+  },
+  nfyWhat: {
+    marginLeft: "42px !important",
+    position: "relative",
+    width: "100%"
+  },
+  tagIcon: {
+    position: "absolute",
+    top: "4px",
+    left: "-36px"
+  },
+  nfyTime: {
+    margin: "8px !important",
+    marginLeft: "42px !important"
+  },
+  showTag: {
+    margin: '0 6px',
+    padding: '2px 6px',
+    borderRadius: '5px',
+    fontSize: 10
   }
 }));
 
@@ -73,9 +93,9 @@ const Watchlist = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    chrome.storage.local.set({ lastQuestions: lastQuestions });
     GettingPosts(followList, followList.length - 1).then((data) => {
       setData(data.sort((a, b) => b.date - a.date));
-      chrome.storage.local.set({ lastQuestions: lastQuestions });
     });
   }, []);
 
@@ -90,10 +110,10 @@ const Watchlist = () => {
             return (
               <Box class="itemBox">
                 <Box class="nfyItemLine">
-                  <p class="nfyWhat">
-                    <span class="tag-icon"><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                  <p className={classes.nfyWhat}>
+                    <span className={classes.tagIcon}><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
                   </p>
-                  <p class="nfyTime">{item.when} w <span class="show-tag">{item.tag}</span></p>
+                  <p className={classes.nfyTime}>{item.when} w <span className={classes.showTag}>{item.tag}</span></p>
                 </Box>
               </Box>
             )
