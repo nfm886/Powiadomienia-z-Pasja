@@ -8,7 +8,7 @@ import { Box, CircularProgress, makeStyles } from '@material-ui/core';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 
 const useStyles = makeStyles((theme) => ({
-  circularProgress: {
+  center: {
     position: "fixed",
     top: "50%",
     left: "50%",
@@ -95,7 +95,7 @@ const Watchlist = () => {
   useEffect(() => {
     chrome.storage.local.set({ lastQuestions: lastQuestions });
     GettingPosts(followList, followList.length - 1).then((data) => {
-      setData(data.sort((a, b) => b.date - a.date));
+      (data.length === 0) ? setData(null) : setData(data.sort((a, b) => b.date - a.date))
     });
   }, []);
 
@@ -103,8 +103,9 @@ const Watchlist = () => {
     <Box id='#nfyContainerInbox'>
       {
         (data === null) ?
-          <Box className={classes.circularProgress}>
-            <CircularProgress color="primary" />
+          <Box className={classes.center}>
+            {/* <CircularProgress color="primary" /> */}
+            <h1>Pusto.</h1>
           </Box> :
           data.map((item) => {
             return (
