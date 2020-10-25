@@ -93,8 +93,8 @@ const Watchlist = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    chrome.storage.local.set({ lastQuestions: lastQuestions });
     GettingPosts(followList, followList.length - 1).then((data) => {
+      chrome.storage.local.set({ lastQuestions: lastQuestions });
       (data.length === 0) ? setData(null) : setData(data.sort((a, b) => b.date - a.date))
     });
   }, []);
