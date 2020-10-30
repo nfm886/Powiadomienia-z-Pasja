@@ -39,13 +39,21 @@ const Notifications = () => {
     )
   });
 
-  return (
-    <div className={classes.root}>
-      {
-        (notifications === null) ? <CircularProgress color="primary" /> : <div dangerouslySetInnerHTML={{ __html: notifications }} class="notifications" />
-      }
-    </div>
-  );
+  if(notifications === 'Userid is empty!') {
+    return (
+      <div className={classes.root}>
+        <h3>Nie jesteś zalogowany.</h3>
+      </div>
+    )
+  } else {
+    return (
+      <div className={classes.root}>
+        {
+          (notifications === null) ? <CircularProgress color="primary" /> : <div dangerouslySetInnerHTML={{ __html: notifications }} class="notifications" />
+        }
+      </div>
+    );
+  }
 }
 
 export default Notifications;
