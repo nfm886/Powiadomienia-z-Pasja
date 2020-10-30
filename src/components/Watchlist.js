@@ -95,33 +95,40 @@ const Watchlist = () => {
   useEffect(() => {
     GettingPosts(followList, followList.length - 1).then((data) => {
       chrome.storage.local.set({ lastQuestions: lastQuestions });
-      (data.length === 0) ? setData(null) : setData(data.sort((a, b) => b.date - a.date))
+      (data.length === 0) ? setData('empty') : setData(data.sort((a, b) => b.date - a.date))
     });
   }, []);
 
-  return (
-    <Box id='#nfyContainerInbox'>
-      {
-        (data === null) ?
-          <Box className={classes.center}>
-            {/* <CircularProgress color="primary" /> */}
-            <h1>Pusto.</h1>
-          </Box> :
-          data.map((item) => {
-            return (
-              <Box class="itemBox">
-                <Box class="nfyItemLine">
-                  <p className={classes.nfyWhat}>
-                    <span className={classes.tagIcon}><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                  </p>
-                  <p className={classes.nfyTime}>{item.when} w <span className={classes.showTag}>{item.tag}</span></p>
+  if(data === 'empty') {
+    return (
+      <Box className={classes.center}>
+        <h1>Pusto.</h1>
+      </Box>
+    )
+  } else {
+    return (
+      <Box id='#nfyContainerInbox'>
+        {
+          (data === null) ?
+            <Box className={classes.center}>
+              <CircularProgress color="primary" />
+            </Box> :
+            data.map((item) => {
+              return (
+                <Box class="itemBox">
+                  <Box class="nfyItemLine">
+                    <p className={classes.nfyWhat}>
+                      <span className={classes.tagIcon}><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                    </p>
+                    <p className={classes.nfyTime}>{item.when} w <span className={classes.showTag}>{item.tag}</span></p>
+                  </Box>
                 </Box>
-              </Box>
-            )
-          })
-      }
-    </Box>
-  )
+              )
+            })
+        }
+      </Box>
+    )
+  }
 }
 
 export default Watchlist;
