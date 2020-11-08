@@ -8,7 +8,7 @@ document.querySelector('div').prepend(audio);
 
 const setDefaultSettings = () => {
   const defaultTheme = 'light';
-  const defaultSounds = 'on';
+  const defaultSounds = 'off';
 
   chrome.storage.sync.set({
     theme: defaultTheme,
