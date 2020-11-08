@@ -1,4 +1,6 @@
-import React from 'react';
+/* global chrome */
+
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -14,11 +16,18 @@ const useStyles = makeStyles((theme) => ({
 
 const SoundSettings = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('off');
+  const [value, setValue] = React.useState(null);
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    chrome.storage.sync.set({sounds: event.target.value});
   };
+
+  useEffect(() => {
+    chrome.storage.sync.get(['sounds'], storage => {
+      setValue(storage.sounds);
+    })
+  },[])
 
   return (
     <FormControl component="fieldset" className={classes.soundFormStyle}>
