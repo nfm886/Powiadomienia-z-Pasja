@@ -6,13 +6,14 @@
 }
 ::-webkit-scrollbar-thumb {
   min-height: 16px;
-  background: #CCC;
+  background: #ccc;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-track {
   background-color: #fefefe;
 }
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -25,8 +26,8 @@ html, body {
   max-height: 467px;
   overflow-y: scroll;
   overflow-x: hidden;
-  margin-top: 118px;
-  border: 1px solid #CCC;
+  margin-top: 60px;
+  border: 1px solid #ccc;
 }
 .nfyTop {
   font-size: 11px;
@@ -57,7 +58,7 @@ html, body {
 }
 .tag-icon {
   font-size: 18px;
-  color: #0984e3
+  color: #0984e3;
 }
 .nfyWrap {
   min-height: calc(92vh + 3px);
@@ -65,31 +66,31 @@ html, body {
 }
 .itemBox {
   height: 70px;
-  border-bottom: 1px dashed #CCC;
+  border-bottom: 1px dashed #ccc;
 }
 .itemBox:hover {
   background-color: #eaeaea;
 }
 .nicon.nanswer {
-  background: url('/media/images/icons.png') no-repeat 0 0;
-} 
+  background: url("/media/images/icons.png") no-repeat 0 0;
+}
 .nicon.ncomment {
-  background: url('/media/images/icons.png') no-repeat 0 -16px;
+  background: url("/media/images/icons.png") no-repeat 0 -16px;
 }
 .nicon.nvoteup {
-  background: url('/media/images/icons.png') no-repeat 0 -32px;
+  background: url("/media/images/icons.png") no-repeat 0 -32px;
 }
 .nicon.nvotedown {
-  background: url('/media/images/icons.png') no-repeat 0 -48px;
+  background: url("/media/images/icons.png") no-repeat 0 -48px;
 }
 .nicon.nbestanswer {
-  background: url('/media/images/icons.png') no-repeat 0 -64px;
+  background: url("/media/images/icons.png") no-repeat 0 -64px;
 }
 .nicon.nmessage {
-  background: url('/media/images/icons.png') no-repeat 0 -80px;
+  background: url("/media/images/icons.png") no-repeat 0 -80px;
 }
 .nicon.nwallpost {
-  background: url('/media/images/icons.png') no-repeat 0 -96px;
+  background: url("/media/images/icons.png") no-repeat 0 -96px;
 }
 .nicon {
   display: inline-block;
@@ -104,21 +105,27 @@ html, body {
   font-size: 12px;
   margin-top: 3px;
 }
-.nfyItemLine, .watchListSettings {
+.nfyItemLine,
+.watchListSettings {
   color: #555;
 }
-.nfyWrap, .nfyItemLine {
+.nfyWrap,
+.nfyItemLine {
   color: #c5c5c5;
 }
-.nfyWrap, .nfyItemLine a {
+.nfyWrap,
+.nfyItemLine a {
   color: #44a;
 }
-.nfyWrap, .nfyItemLine p {
+.nfyWrap,
+.nfyItemLine p {
   display: inline-block;
   margin: 0 0 2px 0;
   line-height: 1.2;
 }
-.nfyItemLine a:focus, .nfyItemLine a:hover, .nfyItemLine a:visited {
+.nfyItemLine a:focus,
+.nfyItemLine a:hover,
+.nfyItemLine a:visited {
   color: #44a;
 }
 .nfyWhat {
@@ -129,7 +136,9 @@ html, body {
   font-size: 12px;
   text-decoration: none;
 }
-.nfyItemLine a:focus, .nfyItemLine a:hover, .nfyItemLine a:visited {
+.nfyItemLine a:focus,
+.nfyItemLine a:hover,
+.nfyItemLine a:visited {
   text-decoration: none;
 }
 .nfyTime {
@@ -140,12 +149,15 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: 81vh;
   text-align: center;
   font-size: 18px;
 }
-.followed li, .removeFromWatchlist, .addToWatchlist, .show-tag {
+.followed li,
+.removeFromWatchlist,
+.addToWatchlist,
+.show-tag {
   background-color: #0984e3;
   color: #fff;
 }
@@ -156,10 +168,10 @@ html, body {
   background: rgb(226, 226, 226);
 }
 .foundTags {
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
 }
 .foundTags > li {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
 }
 .foundTags li > button {
   background-color: #fefefe;
