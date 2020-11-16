@@ -5,6 +5,7 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import "../index.css";
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,17 +42,21 @@ const Notifications = () => {
 
   if(notifications === 'Userid is empty!') {
     return (
-      <div className={classes.root}>
-        <h3>Nie jesteś zalogowany.</h3>
-      </div>
+      <Paper style={{height: '467px'}}>
+        <div className={classes.root}>
+          <h3>Nie jesteś zalogowany.</h3>
+        </div>
+      </Paper>
     )
   } else {
     return (
-      <div className={classes.root}>
-        {
-          (notifications === null) ? <CircularProgress color="primary" /> : <div dangerouslySetInnerHTML={{ __html: notifications }} class="notifications" />
-        }
-      </div>
+      <Paper style={{height: '467px'}}>
+        <div className={classes.root}>
+          {
+            (notifications === null) ? <CircularProgress color="primary" /> : <div dangerouslySetInnerHTML={{ __html: notifications }} class="notifications" />
+          }
+        </div>
+      </Paper>
     );
   }
 }

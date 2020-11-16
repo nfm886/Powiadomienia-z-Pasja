@@ -13,6 +13,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   breadcrumbContainer: {
@@ -53,11 +54,13 @@ const IconBreadcrumbs = () => {
 }
 
 const GeneralSettings = () => {
-  return (
-    <Box>
+return (
+  <Box>
+    <Paper>
       <ThemeSettings />
       <SoundSettings />
-    </Box>
+    </Paper>
+  </Box>
   );
 }
 
@@ -72,17 +75,19 @@ const WatchlistSettings = () => {
 
 const Settings = () => {
   return (
-    <Router>
-      <IconBreadcrumbs />
-      <Switch>
-        <Route path="/settings/general">
-          <GeneralSettings />
-        </Route>
-        <Route path="/settings/watchlist">
-          <WatchlistSettings />
-        </Route>
-      </Switch>
-    </Router>
+    <Paper style={{height: '467px'}}>
+      <Router>
+        <IconBreadcrumbs />
+        <Switch>
+          <Route path="/settings/general">
+            <GeneralSettings />
+          </Route>
+          <Route path="/settings/watchlist">
+            <WatchlistSettings />
+          </Route>
+        </Switch>
+      </Router>
+    </Paper>
   )
 }
 

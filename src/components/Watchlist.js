@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import { html_unescape, parseWhen, parseTime } from '../helpers/functions';
-import { Box, CircularProgress, makeStyles } from '@material-ui/core';
+import { Box, Paper, CircularProgress, makeStyles } from '@material-ui/core';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 
 const useStyles = makeStyles((theme) => ({
@@ -101,32 +101,36 @@ const Watchlist = () => {
 
   if(data === 'empty') {
     return (
-      <Box className={classes.center}>
-        <h1>Pusto.</h1>
-      </Box>
+      <Paper style={{height: '467px'}}>
+        <Box className={classes.center}>
+          <h1>Pusto.</h1>
+        </Box>
+      </Paper>
     )
   } else {
     return (
-      <Box id='#nfyContainerInbox'>
-        {
-          (data === null) ?
-            <Box className={classes.center}>
-              <CircularProgress color="primary" />
-            </Box> :
-            data.map((item) => {
-              return (
-                <Box class="itemBox">
-                  <Box class="nfyItemLine">
-                    <p className={classes.nfyWhat}>
-                      <span className={classes.tagIcon}><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                    </p>
-                    <p className={classes.nfyTime}>{item.when} w <span className={classes.showTag}>{item.tag}</span></p>
+      <Paper style={{height: '467px'}}>
+        <Box id='#nfyContainerInbox'>
+          {
+            (data === null) ?
+              <Box className={classes.center}>
+                <CircularProgress color="primary" />
+              </Box> :
+              data.map((item) => {
+                return (
+                  <Box class="itemBox">
+                    <Box class="nfyItemLine">
+                      <p className={classes.nfyWhat}>
+                        <span className={classes.tagIcon}><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                      </p>
+                      <p className={classes.nfyTime}>{item.when} w <span className={classes.showTag}>{item.tag}</span></p>
+                    </Box>
                   </Box>
-                </Box>
-              )
-            })
-        }
-      </Box>
+                )
+              })
+          }
+        </Box>
+      </Paper>
     )
   }
 }
