@@ -4,35 +4,33 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import { html_unescape, parseWhen, parseTime } from '../helpers/functions';
-import { Box, Paper, CircularProgress, makeStyles } from '@material-ui/core';
-import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import { Box, Paper, CircularProgress, makeStyles, Container, List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  center: {
-    position: "fixed",
+  root: {
+    height: "467px",
+    width: "360px",
+    padding: "0px",
+    paddingTop: "28px"
+  },
+  progress: {
+    position: "absolute",
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)"
+    transform: "translate(-50%,-50%)"
   },
-  nfyWhat: {
-    marginLeft: "42px !important",
-    position: "relative",
-    width: "100%"
-  },
-  tagIcon: {
+  info: {
     position: "absolute",
-    top: "4px",
-    left: "-36px"
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)"
   },
-  nfyTime: {
-    margin: "8px !important",
-    marginLeft: "42px !important"
-  },
-  showTag: {
-    margin: '0 6px',
-    padding: '2px 6px',
-    borderRadius: '5px',
-    fontSize: 10
+  listItem: {
+    borderBottom: "3px dotted #dfe6e9",
+    "&:hover": {
+      backgroundColor: "#dfe6e9",
+      cursor: "pointer"
+    }
   }
 }));
 
@@ -99,38 +97,42 @@ const Watchlist = () => {
     });
   }, []);
 
+  const handleClick = (url) => {
+    window.open(url);
+  }
+
   if(data === 'empty') {
     return (
-      <Paper style={{height: '467px'}}>
-        <Box className={classes.center}>
+      <Paper className={classes.info} elevation={0}>
           <h1>Pusto.</h1>
-        </Box>
       </Paper>
     )
   } else {
     return (
-      <Paper style={{height: '467px'}}>
-        <Box id='#nfyContainerInbox'>
+      <Container className={classes.root}>
           {
-            (data === null) ?
-              <Box className={classes.center}>
-                <CircularProgress color="primary" />
-              </Box> :
-              data.map((item) => {
-                return (
-                  <Box class="itemBox">
-                    <Box class="nfyItemLine">
-                      <p className={classes.nfyWhat}>
-                        <span className={classes.tagIcon}><LoyaltyIcon /></span><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                      </p>
-                      <p className={classes.nfyTime}>{item.when} w <span className={classes.showTag}>{item.tag}</span></p>
-                    </Box>
-                  </Box>
-                )
-              })
+          (data === null) ? 
+            <Box className={classes.progress} className={classes.progress}>
+              <CircularProgress color="primary" />
+            </Box> :
+              <Paper elevation={0}>
+                <List className={classes.root}>
+                {data.map((item, index) => {
+                  return (
+                      <ListItem onClick={ () => handleClick(item.url) } className={classes.listItem}>
+                        <ListItemAvatar>
+                          <Avatar>
+                            <h3>#</h3>
+                          </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={item.title} secondary={item.when + " w " + item.tag} />
+                      </ListItem>
+                  )
+                })}
+                </List>
+              </Paper>
           }
-        </Box>
-      </Paper>
+      </Container>
     )
   }
 }
