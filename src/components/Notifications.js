@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: "467px",
     width: "360px",
-    padding: "0px"
+    padding: "0px",
+    paddingTop: "28px"
   },
   progress: {
     position: "absolute",
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%,-50%)"
   },
   listItem: {
+    borderBottom: "3px dotted #dfe6e9",
     "&:hover": {
       backgroundColor: "#dfe6e9",
       cursor: "pointer"
