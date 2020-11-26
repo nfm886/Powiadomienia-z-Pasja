@@ -9,11 +9,11 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 
 const useStyles = makeStyles({
   root: {
-    width: 360,
+    width: "360px",
     backgroundColor: "#1769aa",
     borderBottom: "2px solid #2196f3",
     boxShadow: "0 -5px 15px 5px rgba(0,0,0,0.5)",
-    position: "sticky",
+    position: "fixed",
     zIndex: 999
   },
   navLink: {
