@@ -16,6 +16,10 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "467px",
+    paddingTop: "58px"
+  },
   breadcrumbContainer: {
     display: "flex",
     justifyContent: "center",
@@ -74,8 +78,10 @@ const WatchlistSettings = () => {
 }
 
 const Settings = () => {
+  const classes = useStyles();
+
   return (
-    <Paper style={{height: '467px'}}>
+    <Paper className={classes.root} elevation={0}>
       <Router>
         <IconBreadcrumbs />
         <Switch>
