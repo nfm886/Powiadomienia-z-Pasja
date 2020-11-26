@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     transform: "translate(-50%,-50%)"
   },
+  info: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)"
+  },
   listItem: {
     borderBottom: "3px dotted #dfe6e9",
     "&:hover": {
@@ -45,23 +51,26 @@ const Notifications = () => {
     axios.post('https://forum.pasja-informatyki.pl/eventnotify', form).then(
       (response) => {
 
-        const html = response.data
-        const $ = cheerio.load(html);
+        if(response.data !== "Userid is empty!") {
+          const html = response.data
+          const $ = cheerio.load(html);
 
-        const nfyWhatClass = $(html).find('.nfyWhat');
-        
-        let i;
-        
-        for(i = 0; i < nfyWhatClass.length; i++) {
-          nfyWhat.push({
-            action: nfyWhatClass[i].children[0].data.trim(),
-            title: nfyWhatClass[i].parent.children[1].children[1].children[0].data.trim(),
-            url: nfyWhatClass[i].children[1].attribs.href,
-            when: nfyWhatClass[i].parent.children[4].prev.children[0].data.trim()
-          })
+          const nfyWhatClass = $(html).find('.nfyWhat');
+          
+          let i;
+          
+          for(i = 0; i < nfyWhatClass.length; i++) {
+            nfyWhat.push({
+              action: nfyWhatClass[i].children[0].data.trim(),
+              title: nfyWhatClass[i].parent.children[1].children[1].children[0].data.trim(),
+              url: nfyWhatClass[i].children[1].attribs.href,
+              when: nfyWhatClass[i].parent.children[4].prev.children[0].data.trim()
+            })
+          }
+          setNotifications(nfyWhat);
+        } else {
+          setNotifications(response.data)
         }
-
-        setNotifications(nfyWhat);
       }
     )
   }, []);
@@ -72,7 +81,7 @@ const Notifications = () => {
 
   if(notifications === 'Userid is empty!') {
     return (
-      <Paper className={classes.root}>
+      <Paper className={classes.info} elevation={0}>
           <h3>Nie jesteś zalogowany.</h3>
       </Paper>
     )
