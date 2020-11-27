@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
     height: "467px",
     width: "360px",
     padding: "0px",
-    paddingTop: "28px"
+    paddingTop: "28px",
+    overflowY: "scroll"
   },
   progress: {
     position: "absolute",

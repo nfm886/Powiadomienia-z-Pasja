@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
 }
 ::-webkit-scrollbar-button {
   display: none;
@@ -17,7 +17,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  min-height: 467px;
+  max-height: 467px;
   min-width: 360px;
   background-color: #fefefe;
+  overflow-y: hidden;
 }
