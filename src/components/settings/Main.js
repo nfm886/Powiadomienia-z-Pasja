@@ -13,12 +13,15 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Paper } from '@material-ui/core';
+import { Container, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "467px",
-    paddingTop: "58px"
+    width: "360px",
+    padding: "0px",
+    paddingTop: "58px",
+    overflowY: "scroll"
   },
   breadcrumbContainer: {
     display: "flex",
@@ -81,19 +84,21 @@ const Settings = () => {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} elevation={0}>
-      <Router>
-        <IconBreadcrumbs />
-        <Switch>
-          <Route path="/settings/general">
-            <GeneralSettings />
-          </Route>
-          <Route path="/settings/watchlist">
-            <WatchlistSettings />
-          </Route>
-        </Switch>
-      </Router>
-    </Paper>
+    <Container className={classes.root}>
+      <Paper elevation={0}>
+        <Router>
+          <IconBreadcrumbs />
+          <Switch>
+            <Route path="/settings/general">
+              <GeneralSettings />
+            </Route>
+            <Route path="/settings/watchlist">
+              <WatchlistSettings />
+            </Route>
+          </Switch>
+        </Router>
+      </Paper>
+    </Container>
   )
 }
 
