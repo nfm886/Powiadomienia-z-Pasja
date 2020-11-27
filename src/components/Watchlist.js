@@ -112,7 +112,7 @@ const Watchlist = () => {
       <Container className={classes.root}>
           {
           (data === null) ? 
-            <Box className={classes.progress} className={classes.progress}>
+            <Box className={classes.progress}>
               <CircularProgress color="primary" />
             </Box> :
               <Paper elevation={0}>
