@@ -5,6 +5,7 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import { html_unescape, parseWhen, parseTime } from '../helpers/functions';
 import { Box, Paper, CircularProgress, makeStyles, Container, List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -123,7 +124,7 @@ const Watchlist = () => {
                       <ListItem onClick={ () => handleClick(item.url) } className={classes.listItem}>
                         <ListItemAvatar>
                           <Avatar>
-                            <h3>#</h3>
+                            <LoyaltyIcon />
                           </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={item.title} secondary={item.when + " w " + item.tag} />

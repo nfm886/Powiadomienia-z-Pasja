@@ -6,6 +6,14 @@ import cheerio from 'cheerio';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Paper, Box, Container, List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import EmailIcon from '@material-ui/icons/Email';
+import SmsIcon from '@material-ui/icons/Sms';
+import StarsIcon from '@material-ui/icons/Stars';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import { Email } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +52,25 @@ const FormData = require('form-data');
 const form = new FormData();
 form.append('ajax', 'receiveNotify');
 
+const renderAction = action => {
+  switch(action) {
+    case "U":
+      return <ThumbUpIcon />
+    case "D":
+      return <ThumbDownIcon />
+    case "K":
+      return <ChatBubbleIcon />
+    case "N":
+      return <StarsIcon />
+    case "W":
+      return <EmailIcon />
+    case "O":
+      return <SmsIcon />
+    default:
+      return <FiberManualRecordIcon /> 
+  }
+}
+
 const Notifications = () => {
   const classes = useStyles();
   const [notifications, setNotifications] = useState(null);
@@ -72,6 +99,7 @@ const Notifications = () => {
         } else {
           setNotifications(response.data)
         }
+        console.log(nfyWhat)
       }
     )
   }, []);
@@ -101,7 +129,11 @@ const Notifications = () => {
                       <ListItem onClick={ () => handleClick(item.url) } className={classes.listItem}>
                         <ListItemAvatar>
                           <Avatar>
-                            <h3>{item.action.slice(0,1)}</h3>
+                            {/* <h3>{item.action.slice(0,1)}</h3> */}
+                            {/* <ThumbUpIcon /> */}
+                            {
+                              renderAction(item.action.slice(0,1))
+                            }
                           </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={item.title} secondary={item.when} />
