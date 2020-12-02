@@ -110,9 +110,11 @@ const Notifications = () => {
 
   if(notifications === 'Userid is empty!') {
     return (
-      <Paper className={classes.info} elevation={0}>
-          <h3>Nie jesteś zalogowany.</h3>
-      </Paper>
+      <Container className={classes.root}>
+        <Paper className={classes.info} elevation={0}>
+            <h3>Nie jesteś zalogowany.</h3>
+        </Paper>
+      </Container>
     )
   } else {
     return (
