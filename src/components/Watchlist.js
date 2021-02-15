@@ -105,9 +105,11 @@ const Watchlist = () => {
 
   if(data === 'empty') {
     return (
-      <Paper className={classes.info} elevation={0}>
-          <h1>Pusto.</h1>
-      </Paper>
+      <Container className={classes.root}>
+        <Paper className={classes.info} elevation={0}>
+            <h1>Pusto.</h1>
+        </Paper>
+      </Container>
     )
   } else {
     return (
